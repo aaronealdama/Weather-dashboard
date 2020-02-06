@@ -1,0 +1,45 @@
+
+.current-day {
+    margin: 20px;
+}
+
+li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+#search-bar {
+    height: 38px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.card {
+    background: blueviolet;
+    color: white;
+    border-radius: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background: darkorchid;
+    color: white;
+}
+ 
+.current-weather {
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+.card-deck {
+    margin: 20px;
+}
+
+
+
+
