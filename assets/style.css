@@ -34,12 +34,24 @@ li {
     font-weight: bold;
     font-size: 20px;
     border-radius: 30px;
+    line-height: 40px;
 }
 
 .card-deck {
     margin: 20px;
 }
 
+.forcast-heading {
+    margin: 30px;
+}
+
+#date-heading {
+    color: darkmagenta;
+}
+
+#forcast-heading {
+    color: darkslateblue;
+}
 
 
 

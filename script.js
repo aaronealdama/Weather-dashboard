@@ -71,7 +71,6 @@ function filteredData() {
         emptyArr.push(response.list[i]);
       }
     }
-    console.log(emptyArr)
     fiveDayForcast();
   });
 }; // function that filters out the data from the API and calls another function fiveDayForcast after
@@ -93,12 +92,15 @@ function uvIndex(uvData) {
 function fiveDayForcast() {
   $(".card-deck").empty();
   $(".current-weather").empty();
+  $(".forcast-heading").empty();
 
   let currentDayDiv = elementGenerator("div", "current-day");
   let divCurrentUV = elementGenerator("div","current-day-div","current-uv", "UV Index: " + uvIndexValue);
   let dateToday = moment().format("MM/DD/YYYY");
-  let dateHeading = elementGenerator("h1","heading");
-  dateHeading.text(dateToday);
+  let forcastHeading = elementGenerator("h2","heading","forcast-heading","5 Day Forcast: ")
+  let dateHeading = elementGenerator("h1","heading","date-heading",dateToday);
+
+  $(".forcast-heading").append(forcastHeading);
 
   for (let i = 0; i < emptyArr.length; i++) {
    let fiveDayDiv = elementGenerator("div", "five-day card");
@@ -111,35 +113,35 @@ function fiveDayForcast() {
    cardBody.append(divDate, divTemp, divHumidity, newImage)
    fiveDayDiv.append(cardBody);
    $(".card-deck").append(fiveDayDiv);
-   
  };
  
  currentDayDiv.append(dateHeading,divCurrentTemp,divCurrentHumidity,divCurrentWindSpeed,divCurrentUV, newCurrentImage);
  $(".current-weather").append(currentDayDiv);
- return this
+
 }; // function that gets and appends the weather data for the next five days
 
-
-//Event Listeners
-$("form").on("submit", function(e) {
-  e.preventDefault();
+function buttonGenerator() {
   let newButton = elementGenerator("button","search-button btn btn-dark",$("#search-bar").val(),$("#search-bar").val())
   let listItem = elementGenerator("li","list-item",$("#search-bar").val())
   listItem.append(newButton);
   $(".searches-container").append(listItem);
+}; //function that generates and appends button onto the page
+
+//Event Listeners
+$("form").on("submit", function(e) {
+  e.preventDefault();
+  buttonGenerator();
   filteredData();
 });
 
 $(".search").on("click", function(e) {
   e.preventDefault();
-  let newButton = elementGenerator("button","search-button btn btn-dark",$("#search-bar").val(),$("#search-bar").val())
-  let listItem = elementGenerator("li","list-item",$("#search-bar").val())
-  listItem.append(newButton);
-  $(".searches-container").append(listItem);
+  buttonGenerator();
   filteredData();
 });
 
-$(document).on("click",".search-button", function() {
+$(document).on("click",".search-button", function(e) {
+  e.preventDefault();
   let buttonName = $(this).attr("id");
   let queryURL =
   "https://api.openweathermap.org/data/2.5/forecast?q=" +
@@ -162,7 +164,6 @@ $(document).on("click",".search-button", function() {
         emptyArr.push(response.list[i]);
       }
     }
-    fiveDayForcast();
   });
 
   $.ajax({
