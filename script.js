@@ -36,10 +36,10 @@ function elementGenerator(element,classTitle,idTitle,text) {
 function filteredData() {
   let cityName = $("#search-bar").val();
   let queryURL =
-  "http://api.openweathermap.org/data/2.5/forecast?q=" +
+  "https://api.openweathermap.org/data/2.5/forecast?q=" +
   cityName +
   "&APPID=84df449c8c088263e2e354a1926ed25a&units=imperial";
-  let currentDataQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName 
+  let currentDataQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName 
   + "&APPID=626f2185f392c0cd5f0bd597446c71df&units=imperial"
 
   if (emptyArr.length !== 0) {
@@ -55,8 +55,8 @@ function filteredData() {
     divCurrentHumidity = elementGenerator("div","current-day-div","current-humidity", "Humidity: " + response.main.humidity + " %");
     divCurrentWindSpeed = elementGenerator("div", "current-day-div", "current-wind-speed", "Wind Speed: " + response.wind.speed + " miles/hour");
     newCurrentImage = elementGenerator("img", "weather-icon");
-    newCurrentImage.attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-    let uvQuery = "http://api.openweathermap.org/data/2.5/uvi?appid=626f2185f392c0cd5f0bd597446c71df&lat="+ response.coord.lat + "&lon=" +
+    newCurrentImage.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+    let uvQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=626f2185f392c0cd5f0bd597446c71df&lat="+ response.coord.lat + "&lon=" +
     response.coord.lon;
     uvIndex(uvQuery); // calls a seperate function with parameter uvQuery to get the UV index data
   }); // function that filters data as well as makes another API call to get the current data
@@ -142,10 +142,10 @@ $(".search").on("click", function(e) {
 $(document).on("click",".search-button", function() {
   let buttonName = $(this).attr("id");
   let queryURL =
-  "http://api.openweathermap.org/data/2.5/forecast?q=" +
+  "https://api.openweathermap.org/data/2.5/forecast?q=" +
   buttonName +
   "&APPID=84df449c8c088263e2e354a1926ed25a&units=imperial";
-  let currentDataQueryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + buttonName 
+  let currentDataQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + buttonName 
   + "&APPID=626f2185f392c0cd5f0bd597446c71df&units=imperial"
 
   if (emptyArr.length !== 0) {
@@ -174,8 +174,8 @@ $(document).on("click",".search-button", function() {
     divCurrentHumidity = elementGenerator("div","current-day-div","current-humidity", "Humidity: " + response.main.humidity + " %");
     divCurrentWindSpeed = elementGenerator("div", "current-day-div", "current-wind-speed", "Wind Speed: " + response.wind.speed + " miles/hour");
     newCurrentImage = elementGenerator("img", "weather-icon");
-    newCurrentImage.attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-    let uvQuery = "http://api.openweathermap.org/data/2.5/uvi?appid=626f2185f392c0cd5f0bd597446c71df&lat="+ response.coord.lat + "&lon=" +
+    newCurrentImage.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+    let uvQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=626f2185f392c0cd5f0bd597446c71df&lat="+ response.coord.lat + "&lon=" +
     response.coord.lon;
     uvIndex(uvQuery);
     fiveDayForcast();
